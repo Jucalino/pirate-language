@@ -1,6 +1,45 @@
-<div>
-  <h1>
-    Opa
-  </h1>
+<mat-toolbar>
+  <span>Translate Pirate Language</span>
+</mat-toolbar>
+
+<div class="container">
+  <div>
+    <mat-card>
+      <form [formGroup]="tradutor">
+        <h3>Type in english here</h3>
+        <mat-form-field class="example-full-width" appear="fill">
+          <mat-label>Type in english</mat-label>
+          <textarea matInput placeholder="Type here" formControlName="text">
+          </textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="onSubmit()">
+          Translate
+        </button>
+        <app-campo-control-erro
+          [mostrarErro]="tradutor.get('text')!.status === 'PENDING'"
+          msgErro="Validando texto..."
+        >
+        </app-campo-control-erro>
+      </form>
+    </mat-card>
+  </div>
+
+  <div>
+    <mat-card>
+      <form [formGroup]="resposta">
+        <h3>PIRATE LANGUAGE</h3>
+        <div>
+          <mat-form-field class="example-full-width-esquerdo" appear="fill">
+            <textarea
+              matInput
+              placeholder="Response text"
+              id="response"
+              formControlName="response"
+              [readonly]="true"
+            ></textarea>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card>
+  </div>
 </div>
-<mat-slider min="1" max="100" step="1" value="1"></mat-slider>

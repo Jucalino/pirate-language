@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API: 'https://api.funtranslations.com/translate/pirate.json'
+  API: 'https://api.funtranslations.com/translate'
 };
 
 /*
