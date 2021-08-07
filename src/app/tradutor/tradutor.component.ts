@@ -1,9 +1,7 @@
-import { apiPirataResponse } from './../pirataTraducaoResponse';
+import { ApiPirataResponse } from './../pirataTraducaoResponse';
 import { PirateService } from './../pirate.service';
 import {
   MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -14,13 +12,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tradutor.component.css'],
 })
 export class TradutorComponent implements OnInit {
-  tradutor!: FormGroup;
+  tradutorForm!: FormGroup;
 
-  progress = 0;
-
-  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
-  durationInSeconds = 3;
+  progress: boolean = false;
 
   constructor(
     private formsBuilder: FormBuilder,
@@ -29,38 +23,39 @@ export class TradutorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.tradutor = this.formsBuilder.group({
-      textInput: [null, Validators.required],
-      response: [null],
+    this.tradutorForm = this.formsBuilder.group({
+      texto: [null, Validators.required],
+      textoTraduzido: [null],
     });
   }
 
   onSubmit() {
-    console.log(this.tradutor)
-    if (this.tradutor.valid) {
+    if (this.tradutorForm.valid) {
+      this.progress = true
       this.apiPirata
-        .buscarText(this.tradutor.get('textInput')?.value)
+        .traduzir(this.tradutorForm.get('texto')?.value)
         .subscribe(
-          (dados: apiPirataResponse) => {
-            this.tradutor.get('response')?.setValue(dados.contents.translated);
+          (dados: ApiPirataResponse) => {
+            this.tradutorForm.get('textoTraduzido')?.setValue(dados.contents.translated);
             this._snackBar.open('Successfully translated!', 'X', {
-              horizontalPosition: this.horizontalPosition,
-              verticalPosition: this.verticalPosition,
-              duration: this.durationInSeconds * 1000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top',
+              duration: 3000,
             });
-            this.progress = 100;
+            this.progress = false;
           },
           (error: any) => {
+            this.progress = false;
             this._snackBar.open('Something is wrong!', 'X', {
-              horizontalPosition: this.horizontalPosition,
-              verticalPosition: this.verticalPosition,
+              horizontalPosition: 'right',
+              verticalPosition: 'top',
             });
           }
         );
     } else {
       this._snackBar.open('Form is invalid!', 'X', {
-        horizontalPosition: this.horizontalPosition,
-        verticalPosition: this.verticalPosition,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
       });
     }
   }

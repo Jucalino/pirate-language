@@ -1,6 +1,6 @@
 <div>
     <mat-card>
-      <form [formGroup]="tradutor">
+      <form [formGroup]="tradutorForm">
         <h3>Type in english here</h3>
         <mat-form-field class="example-full-width" appear="fill">
           <mat-label>Type in english</mat-label>
@@ -9,9 +9,9 @@
             rows="5"
             matInput
             placeholder="Type here"
-            formControlName="textInput">
+            formControlName="texto">
           </textarea>
-          <mat-error *ngIf="tradutor.get('textInput')?.hasError('required')">
+          <mat-error *ngIf="tradutorForm.get('texto')?.hasError('required')">
             Required field
           </mat-error>
         </mat-form-field>
@@ -23,24 +23,23 @@
  
 
   <mat-card>
-    <form [formGroup]="tradutor">
+    <form [formGroup]="tradutorForm">
       <h3>Pirata Language</h3>
       <div>
-        <mat-form-field class="example-full-width-esquerdo" appear="fill">
+        <mat-form-field class="full-width" appear="fill">
           <textarea
             cols="30"
             rows="5"
             matInput
             placeholder="Response text"
-            id="response"
-            formControlName="response"
+            formControlName="textoTraduzido"
             [readonly]="true"
           ></textarea>
         </mat-form-field>
       </div>
       <mat-progress-bar
-        mode="determinate"
-        [value]="progress"
+        *ngIf="progress"
+        mode="indeterminate"
       ></mat-progress-bar>
     </form>
   </mat-card>

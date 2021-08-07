@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { apiPirataResponse } from './pirataTraducaoResponse';
+import { ApiPirataResponse } from './pirataTraducaoResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -12,12 +12,12 @@ export class PirateService {
 
   constructor(private http: HttpClient) {}
   
-  buscarText(textToTranslate: string){
+  traduzir(textToTranslate: string){
     const params = {
-      text: textToTranslate
+      text: textToTranslate.trim()
     }
 
-    return this.http.get<apiPirataResponse>(this.API, { params: params })
+    return this.http.get<ApiPirataResponse>(this.API, { params: params })
   }
   
 }
