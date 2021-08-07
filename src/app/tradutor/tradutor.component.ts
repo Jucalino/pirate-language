@@ -12,8 +12,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tradutor.component.css'],
 })
 export class TradutorComponent implements OnInit {
-  tradutorForm!: FormGroup;
-
+  tradutorForm: FormGroup;
   progress: boolean = false;
 
   constructor(
