@@ -1,0 +1,47 @@
+<div>
+    <mat-card>
+      <form [formGroup]="tradutor">
+        <h3>Type in english here</h3>
+        <mat-form-field class="example-full-width" appear="fill">
+          <mat-label>Type in english</mat-label>
+          <textarea
+            cols="30"
+            rows="5"
+            matInput
+            placeholder="Type here"
+            formControlName="textInput">
+          </textarea>
+          <mat-error *ngIf="tradutor.get('textInput')?.hasError('required')">
+            Required field
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="onSubmit()">
+          Translate
+        </button>
+      </form>
+    </mat-card>
+ 
+
+  <mat-card>
+    <form [formGroup]="tradutor">
+      <h3>Pirata Language</h3>
+      <div>
+        <mat-form-field class="example-full-width-esquerdo" appear="fill">
+          <textarea
+            cols="30"
+            rows="5"
+            matInput
+            placeholder="Response text"
+            id="response"
+            formControlName="response"
+            [readonly]="true"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <mat-progress-bar
+        mode="determinate"
+        [value]="progress"
+      ></mat-progress-bar>
+    </form>
+  </mat-card>
+   </div>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CampoControlErroComponent } from './campo-control-erro.component';
+import { TradutorComponent } from './tradutor.component';
 
-describe('CampoControlErroComponent', () => {
-  let component: CampoControlErroComponent;
-  let fixture: ComponentFixture<CampoControlErroComponent>;
+describe('TradutorComponent', () => {
+  let component: TradutorComponent;
+  let fixture: ComponentFixture<TradutorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CampoControlErroComponent ]
+      declarations: [ TradutorComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CampoControlErroComponent);
+    fixture = TestBed.createComponent(TradutorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

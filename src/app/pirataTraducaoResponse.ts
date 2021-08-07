@@ -1,4 +1,4 @@
-export interface Pirata {
+export interface apiPirataResponse {
   success: {
     total: number;
   };

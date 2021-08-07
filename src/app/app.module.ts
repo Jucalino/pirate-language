@@ -7,19 +7,22 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CampoControlErroComponent } from './campo-control-erro/campo-control-erro.component';
+import { TradutorComponent } from './tradutor/tradutor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CampoControlErroComponent,
+    TradutorComponent,
   ],
   imports: [
     BrowserModule,
+    MatProgressBarModule,
     MatSliderModule,
     BrowserAnimationsModule,
     MatCardModule,
@@ -30,7 +33,8 @@ import { CampoControlErroComponent } from './campo-control-erro/campo-control-er
     FormsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
